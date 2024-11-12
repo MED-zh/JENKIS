@@ -18,8 +18,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube Server') {
                     sh "${env.SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
-                        -Dsonar.projectKey=SN-test \
-                        -Dsonar.projectName='SN-test' \
+                        -Dsonar.projectKey=tp \
+                        -Dsonar.projectName='tp' \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=${env.SONARQUBE_URL} \
