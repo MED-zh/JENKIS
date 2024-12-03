@@ -3,13 +3,13 @@ pipeline {
  
  environment {
  GIT_CREDENTIALS = 'github-token'
- SONARQUBE_CREDENTIALS = 'sonarqube-token'
+ SONARQUBE_CREDENTIALS = 'TOKEN'
  }
  stages {
      stage('Clone Repository') {
          steps {
          echo 'Cloning repository from GitHub...'
-         git credentialsId: "${GIT_CREDENTIALS}", url: 'https://github.com/votreutilisateur/votre-repository.git'
+         git credentialsId: "${GIT_CREDENTIALS}", url: 'https://github.com/MED-zh/JENKIS.git'
         }
      }
  stage('Install Dependencies') {
@@ -27,7 +27,7 @@ pipeline {
  stage('SonarQube Analysis') {
          steps {
          echo 'Running SonarQube analysis...'
-         withCredentials([string(credentialsId: "${SONARQUBE_CREDENTIALS}", 
+         withCredentials([string(credentialsId: "${TOKEN}", 
                 variable: 'SONAR_TOKEN')]) {
                  sh 'sonar-scanner -Dsonar.projectKey=my-node-app -
                 Dsonar.host.url=http://your-sonarqube-url -Dsonar.login=$SONAR_TOKEN'
