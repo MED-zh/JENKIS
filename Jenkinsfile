@@ -1,38 +1,51 @@
 pipeline {
-    agent any
-
-    environment {
-        SONARQUBE_URL = 'http://localhost:9000'
-        SONARQUBE_SCANNER = 'SonarQube Scanner'  // Nom du scanner SonarQube configuré
-        SONAR_AUTH_TOKEN = credentials('TOKEN') // ID du token d’authentification Jenkins
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                // Cloner le code depuis GitHub
-                git url: 'https://github.com/MED-zh/JENKIS.git', branch: 'main'
-            }
+ agent any
+ 
+ environment {
+ GIT_CREDENTIALS = 'github-token'
+ SONARQUBE_CREDENTIALS = 'sonarqube-token'
+ }
+ stages {
+     stage('Clone Repository') {
+         steps {
+         echo 'Cloning repository from GitHub...'
+         git credentialsId: "${GIT_CREDENTIALS}", url: 'https://github.com/votreutilisateur/votre-repository.git'
         }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube Server') {
-                    sh "${env.SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
-                        -Dsonar.projectKey=tp \
-                        -Dsonar.projectName='tp' \
-                        -Dsonar.projectVersion=1.0 \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=${env.SONARQUBE_URL} \
-                        -Dsonar.login=${env.SONAR_AUTH_TOKEN}"
-                }
-            }
-        }
-        stage('Quality Gate') {
-            steps {
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-    }
+     }
+ stage('Install Dependencies') {
+             steps {
+             echo 'Installing dependencies...'
+             sh 'npm install'
+             }
+ }
+ stage('Run Tests') {
+         steps {
+         echo 'Running tests...'
+         sh 'npm test'
+         }
+ }
+ stage('SonarQube Analysis') {
+         steps {
+         echo 'Running SonarQube analysis...'
+         withCredentials([string(credentialsId: "${SONARQUBE_CREDENTIALS}", 
+                variable: 'SONAR_TOKEN')]) {
+                 sh 'sonar-scanner -Dsonar.projectKey=my-node-app -
+                Dsonar.host.url=http://your-sonarqube-url -Dsonar.login=$SONAR_TOKEN'
+                 }
+         }
+ }
+ stage('Deploy Application') {
+         steps {
+         echo 'Deploying the application to the local directory...'
+         sh 'mkdir -p /path/to/deployment/directory'
+         sh 'cp -r * /path/to/deployment/directory/'
+         }
+ }
+     stage('Run Application') {
+         steps {
+         echo 'Running the application...'
+         sh 'node /path/to/deployment/directory/app.js'
+         }
+     }
+ }
 }
