@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'windows' } 
+    agent { label 'linux' }
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
@@ -7,10 +7,11 @@ pipeline {
         stage('Scan') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    bat './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
                 }
             }
         }
     }
 }
+
 
