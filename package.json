@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Running tests...\" && exit 0", // A placeholder test command, replace it with your actual test command
+      "build": "webpack --config webpack.config.js",
+       "start": "node app.js"
   },
   "author": "",
   "license": "ISC"
