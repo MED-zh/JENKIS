@@ -44,12 +44,14 @@ pipeline {
             }
         }
 
-        stage('Run Application') {
-            steps {
+       stage('Run Application') {
+             steps {
                 echo 'Running the application...'
-                bat 'start /B npm start' // Run in the background
-            }
-        }
+                bat 'start /B npm start' // Starts the app in the background
+                echo 'Application is running on http://localhost:3000'
+         }
+    }
+
     }
 
     post {
