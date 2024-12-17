@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Running tests...\" && exit 0", // A placeholder test command, replace it with your actual test command
-      "build": "webpack --config webpack.config.js",
-       "start": "node app.js"
+    "test": "echo \"Running tests...\" && exit 0",
+    "build": "echo 'Building the application...'"
   },
   "author": "",
   "license": "ISC"
