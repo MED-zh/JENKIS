@@ -47,7 +47,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 echo 'Running the application...'
-                bat 'npm start' // Start the Node.js application
+                bat 'start /B npm start' // Run in the background
             }
         }
     }
@@ -61,6 +61,3 @@ pipeline {
         }
     }
 }
-
-
-
