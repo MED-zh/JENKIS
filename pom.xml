@@ -4,16 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>jinkies ci/cd</artifactId>
+    <artifactId>JINKIES ci/cd</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+         
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
         <!-- SonarQube Properties -->
-        <sonar.projectKey>JINKIES</sonar.projectKey>
-        <sonar.projectName>JINKIES</sonar.projectName>
+        <sonar.projectKey>JINKIES ci/cd</sonar.projectKey>
+        <sonar.projectName>JINKIES ci/cd</sonar.projectName>
         <sonar.projectVersion>1.0</sonar.projectVersion>
         <sonar.sources>.</sonar.sources>
         <sonar.exclusions>**/node_modules/**, **/*.json, **/README.md, **/app.js</sonar.exclusions>
