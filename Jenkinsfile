@@ -1,5 +1,5 @@
 pipeline {
-    agent any  // Specify a Windows agent
+    agent { label 'window' } // Specify a Windows agent
     tools {
         nodejs 'nodejs' // Use the Node.js installation configured in Jenkins
     }
@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        SONARQUBE_ENV = 'sonar' 
+        SONARQUBE_ENV = 'sonar' // SonarQube configuration name in Jenkins
     }
 
     stages {
@@ -47,7 +47,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 echo 'Running the application...'
-                bat 'npm start' 
+                bat 'npm start' // Start the Node.js application
             }
         }
     }
