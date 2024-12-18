@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -7,20 +7,20 @@
     <artifactId>JINKIES</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Project Properties -->
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
-        <!-- SonarQube Properties -->
-        <sonar.projectKey>JINKIES</sonar.projectKey>
-        <sonar.projectName>JINKIES</sonar.projectName>
-        <sonar.projectVersion>1.0</sonar.projectVersion>
-        <sonar.sources>.</sonar.sources>
-        <sonar.exclusions>**/node_modules/**, **/*.json, **/README.md, **/app.js</sonar.exclusions>
+        <!-- SonarQube Exclusions -->
+        <sonar.exclusions>
+            **/node_modules/**, **/*.json, **/README.md, **/app.js
+        </sonar.exclusions>
     </properties>
 
+    <!-- Build Plugins -->
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -30,6 +30,8 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+
+            <!-- SonarQube Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
