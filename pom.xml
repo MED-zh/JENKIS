@@ -4,25 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>JINKIES ci/cd</artifactId>
+    <artifactId>JINKIESCICD</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-         
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
-        <!-- SonarQube Properties -->
-        <sonar.projectKey>JINKIES ci/cd</sonar.projectKey>
-        <sonar.projectName>JINKIES ci/cd</sonar.projectName>
-        <sonar.projectVersion>1.0</sonar.projectVersion>
-        <sonar.sources>.</sonar.sources>
         <sonar.exclusions>**/node_modules/**, **/*.json, **/README.md, **/app.js</sonar.exclusions>
     </properties>
 
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -32,6 +25,8 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
+
+            <!-- SonarQube Scanner Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
@@ -39,4 +34,6 @@
             </plugin>
         </plugins>
     </build>
+
+   
 </project>
