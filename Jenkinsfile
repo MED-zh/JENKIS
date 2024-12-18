@@ -47,7 +47,7 @@ pipeline {
        stage('Run Application') {
              steps {
                 echo 'Running the application...'
-                bat 'start /B npm start' // Starts the app in the background
+                bat 'start npm start' // Starts the app in the background
                 echo 'Application is running on http://localhost:3000'
          }
     }
