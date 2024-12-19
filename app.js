@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
   res.end('Hello, world  i am mohamed zahouane \n');
 });
 
-const PORT = 3001;
+const PORT = 3002;
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 })
