@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'window' } // Specify a Windows agent
+    agent { label 'contrôleur' } // Specify a Windows agent
     tools {
         nodejs 'nodejs' // Use the Node.js installation configured in Jenkins
     }
